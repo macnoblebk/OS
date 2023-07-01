@@ -14,7 +14,13 @@ int main(int argc, char* argv[]) {
       return 1;
    }
 
+   char buffer[256];
 
+   while ( fgets(buffer, sizeof(buffer), fp) != NULL ) {
+      printf("%s", buffer);
+   }
+   
+   fclose(fp);
 
 return 0;
 }
