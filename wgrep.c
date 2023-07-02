@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 int main(int argc, char* argv[]) {
    if (argc == 1) {
@@ -12,24 +13,27 @@ int main(int argc, char* argv[]) {
       return 0;
    }
 
-   char* filename;
-   File *fp = NULL;
+   char* line = NULL;
+   size_t linecap = 0;
+
+   char* search_term = argv[1];
 
    for (int i = 2; i < argc; i++) {
 
-      filename = argv[i];
-
-      fp = fopen(filename, 'r');
+      char *filename = argv[i];
+      FILE *fp = fopen(filename, "r");
 
       if (fp == NULL) {
          printf("wgrep:cannot open file.\n");
       } 
+      
+      while (getline(&line, &linecap, fp)) {
+         if (strstr(line, search_term) != NULL)
+           printf("%s", line);
+      }
 
-        
+      fclose(fp);
    }
    
-
-
-
    return 0;
 }
