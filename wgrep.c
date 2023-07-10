@@ -23,9 +23,14 @@ int main(int argc, char* argv[]) {
    }
    
    const char* searchTerm = argv[1]; 
+   if (argc == 2) {
+      char buffer [128];
+      while (fgets(buffer, sizeof(buffer), stdin) != NULL) {
+         if (strstr(buffer, searchTerm)!= NULL)
+            printf("%s", buffer);
+      }
    
-   if (argc == 2)
-      wgrep(stdin, searchTerm); 
+   } 
    
    else {
       for (int i = 2; i < argc; i++) {
