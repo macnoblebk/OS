@@ -6,13 +6,13 @@ void wgrep(FILE *fp, const char *searchTerm) {
    char *line = NULL;
    size_t len = 0;
  
-   while (getline(&line, &len, fp) != -1){
-      if (strstr(line, searchTerm) != NULL)
+   while (getline(&line, &len, fp) != -1) {
+      if (strstr(line, searchTerm) != NULL) 
          printf("%s", line);
+   
    }
-
+   
    free(line);
-
 }
 
 int main(int argc, char* argv[]) {
@@ -28,8 +28,8 @@ int main(int argc, char* argv[]) {
       while (fgets(buffer, sizeof(buffer), stdin) != NULL) {
          if (strstr(buffer, searchTerm)!= NULL)
             printf("%s", buffer);
+            return 0;
       }
-   
    } 
    
    else {
