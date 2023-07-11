@@ -24,7 +24,7 @@
 
          }
 
-         fclose(argv[i]);
+         fclose(fp);
       }
 
       return 0;
