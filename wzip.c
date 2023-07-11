@@ -21,7 +21,7 @@
                
             else {
                fwrite(&count, sizeof(int), 1, stdout);
-               fwrite(&prevChar, size(char), 1, stdout);
+               fwrite(&prevChar, sizeof(char), 1, stdout);
                prevChar = currChar;
                count = 1;
             }
@@ -32,8 +32,6 @@
 	    
          fclose(fp);
       }
-
-     }
 
       return 0;
    }   
